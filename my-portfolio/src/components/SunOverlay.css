@@ -1,0 +1,75 @@
+.sun-overlay {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  pointer-events: none;
+
+  perspective: 1000px; /* 3D depth for subtle effect */
+}
+
+.sun-overlay img {
+  width: 230px;
+  height: 250px;
+
+  filter: drop-shadow(0 0 35px orange)
+          drop-shadow(0 0 65px rgba(255,165,0,0.8));
+
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+
+  animation: sunRotate 20s linear infinite,
+             sunPulse 3s ease-in-out infinite;
+}
+
+@keyframes sunRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+
+@keyframes sunFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes sunPulse {
+  0% {
+    filter: drop-shadow(0 0 35px orange)
+            drop-shadow(0 0 65px rgba(255,165,0,0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 45px orange)
+            drop-shadow(0 0 85px rgba(255,165,0,1));
+  }
+  100% {
+    filter: drop-shadow(0 0 35px orange)
+            drop-shadow(0 0 65px rgba(255,165,0,0.8));
+  }
+}
+
+@keyframes sunOrbit3D {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: rotateX(12deg) rotateY(18deg);
+  }
+  50% {
+    transform: rotateX(0deg) rotateY(36deg);
+  }
+  75% {
+    transform: rotateX(-12deg) rotateY(18deg);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+}
